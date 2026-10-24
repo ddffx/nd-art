@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Neel Das — Portfolio</title>
+<meta name="description" content="Paintings and digital work by Neel Das.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: editorial masthead, one large lead work, then a two-up catalogue
+     of the rest, each with a wall-label caption and click-to-enlarge. */
+  :root{
+    color-scheme:light;
+    --bg:#f1f2ed; --surface:#fbfbf8; --ink:#1a1c18; --muted:#656a60;
+    --line:#d9dbd2; --accent:#2f5d3a; --accent-ink:#244a2e;
+    --scrim:rgba(18,20,15,.82);
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --maxw:1080px;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#131510; --surface:#1c1e18; --ink:#ebeae1; --muted:#9a9e92;
+    --line:#2b2e26; --accent:#8bb98c; --accent-ink:#a7cda8;
+    --scrim:rgba(8,9,6,.9); color-scheme:dark;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#131510; --surface:#1c1e18; --ink:#ebeae1; --muted:#9a9e92;
+    --line:#2b2e26; --accent:#8bb98c; --accent-ink:#a7cda8;
+    --scrim:rgba(8,9,6,.9); color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;
+    line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:var(--maxw);margin:0 auto;
+    padding-left:max(22px,env(safe-area-inset-left,0px));
+    padding-right:max(22px,env(safe-area-inset-right,0px));}
+
+  header.masthead{padding-block:clamp(44px,9vw,92px) clamp(30px,5vw,46px)}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 .9rem}
+  h1.name{font-family:var(--serif);font-weight:500;
+    font-size:clamp(2.9rem,9vw,5.3rem);line-height:.98;letter-spacing:-.015em;
+    margin:0;text-wrap:balance}
+  .tagline{font-family:var(--serif);font-style:italic;font-weight:400;
+    color:var(--muted);font-size:clamp(1.1rem,2.6vw,1.45rem);
+    margin:.85rem 0 0;max-width:40ch}
+  .masthead-meta{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:1.6rem;
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted)}
+  .masthead-meta span{white-space:nowrap}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  main{padding-block:clamp(30px,5vw,52px) 0}
+  .lead{max-width:620px;margin:0 auto clamp(34px,5vw,60px)}
+  .lead figcaption{display:block;text-align:center;margin-top:1rem}
+  .lead .cat-no{display:block;margin-bottom:.4rem}
+
+  .gallery{columns:1;column-gap:clamp(22px,3.4vw,40px)}
+  @media(min-width:680px){.gallery{columns:2}}
+  figure.piece{break-inside:avoid;margin:0 0 clamp(30px,4.4vw,52px);padding:0}
+
+  .frame{display:block;width:100%;padding:0;border:1px solid var(--line);
+    background:var(--surface);border-radius:2px;overflow:hidden;cursor:zoom-in;
+    box-shadow:0 1px 2px rgba(20,24,16,.05),0 12px 30px -18px rgba(20,24,16,.28);
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+  .frame:hover,.frame:focus-visible{transform:translateY(-3px);
+    box-shadow:0 2px 4px rgba(20,24,16,.08),0 26px 50px -22px rgba(20,24,16,.4);outline:none}
+  .frame:focus-visible{box-shadow:0 0 0 2px var(--accent),0 26px 50px -22px rgba(20,24,16,.4)}
+  .frame img{display:block;width:100%;height:auto}
+
+  figcaption{margin-top:.85rem}
+  .grid-cap{display:grid;grid-template-columns:auto 1fr;column-gap:.9rem;align-items:baseline}
+  .cat-no{font-family:var(--mono);font-size:.74rem;color:var(--accent-ink);
+    letter-spacing:.05em;padding-top:.15rem}
+  .cap-body{min-width:0}
+  .cap-title{font-family:var(--serif);font-size:1.18rem;font-weight:500;line-height:1.2;margin:0}
+  .cap-title em{font-style:italic;font-weight:400}
+  .cap-meta{font-size:.84rem;color:var(--muted);margin:.25rem 0 0;font-variant-numeric:tabular-nums}
+
+  .empty{color:var(--muted);font-family:var(--serif);font-style:italic;
+    font-size:1.2rem;text-align:center;padding:3rem 0}
+
+  footer{margin-top:clamp(40px,7vw,80px);padding-block:clamp(26px,4vw,40px);
+    border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:.4rem 1rem;
+    justify-content:space-between;align-items:baseline}
+  footer .sig{font-family:var(--serif);font-size:1rem}
+  footer .meta{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted)}
+
+  .toggle{position:fixed;top:0;right:0;z-index:20;
+    margin-top:max(14px,env(safe-area-inset-top,0px));
+    margin-right:max(14px,env(safe-area-inset-right,0px));
+    width:40px;height:40px;border-radius:999px;border:1px solid var(--line);
+    background:var(--surface);color:var(--ink);cursor:pointer;font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px -10px rgba(20,24,16,.4)}
+  .toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .lb{position:fixed;inset:0;z-index:40;background:var(--scrim);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:1rem;padding:max(28px,env(safe-area-inset-top,0px)) 24px 28px;
+    opacity:0;transition:opacity .28s}
+  .lb.open{opacity:1}
+  .lb img{max-width:min(94vw,860px);max-height:76vh;width:auto;height:auto;
+    border-radius:2px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+  .lb figcaption{display:block;text-align:center;margin:0;color:#e9e8df;max-width:60ch}
+  .lb .cap-title{color:#fff}
+  .lb .cap-meta{color:#c4c7bb}
+  .lb-close{position:absolute;top:max(16px,env(safe-area-inset-top,0px));
+    right:max(16px,env(safe-area-inset-right,0px));width:44px;height:44px;
+    border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);
+    color:#fff;font-size:1.35rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lb-close:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<button class="toggle" id="themeBtn" type="button" aria-label="Switch between light and dark">◑</button>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Selected Works</p>
+    <h1 class="name">Neel Das</h1>
+    <p class="tagline">Representational painting &amp; digital work — studies of light, place, and things left behind.</p>
+    <div class="masthead-meta">
+      <span>Painting · Digital</span>
+      <span>Portfolio</span>
+    </div>
+  </header>
+  <hr class="rule">
+
+  <main>
+    <div id="lead"></div>
+    <div class="gallery" id="gallery"></div>
+    <noscript><p class="empty">Please enable JavaScript to view the gallery.</p></noscript>
+  </main>
+
+  <footer>
+    <span class="sig">Neel Das</span>
+    <span class="meta" id="year">Portfolio</span>
+  </footer>
+</div>
+
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged artwork" hidden>
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">✕</button>
+  <img id="lbImg" src="" alt="">
+  <figcaption>
+    <p class="cap-title" id="lbTitle"></p>
+    <p class="cap-meta" id="lbMeta"></p>
+  </figcaption>
+</div>
+
+<script src="artworks.js"></script>
+<script>
+(function(){
+  "use strict";
+  var root=document.documentElement;
+
+  /* Theme toggle (per-viewer convenience only) */
+  var btn=document.getElementById('themeBtn');
+  try{var t=localStorage.getItem('neel-theme'); if(t==='dark'||t==='light') root.setAttribute('data-theme',t);}catch(e){}
+  btn.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('neel-theme',next)}catch(e){}
+  });
+
+  var works=(window.ARTWORKS||[]).filter(function(a){return a&&a.image;});
+  document.getElementById('year').textContent='© '+new Date().getFullYear()+' Neel Das';
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function pad(n){return (n<10?'0':'')+n;}
+  function metaLine(a){return [a.medium,a.size,a.year].filter(Boolean).map(esc).join(' · ');}
+
+  function frameHTML(a){
+    return '<button class="frame" type="button" '+
+      'data-title="'+esc(a.title||'Untitled')+'" data-meta="'+metaLine(a)+'" '+
+      'aria-label="Enlarge: '+esc(a.title||'Untitled')+'">'+
+      '<img src="'+esc(a.image)+'" loading="lazy" alt="'+esc(a.alt||a.title||'Artwork')+'">'+
+      '</button>';
+  }
+  function capHTML(a,no,grid){
+    var inner='<p class="cap-title"><em>'+esc(a.title||'Untitled')+'</em></p>'+
+              (metaLine(a)?'<p class="cap-meta">'+metaLine(a)+'</p>':'');
+    if(grid){
+      return '<figcaption class="grid-cap"><span class="cat-no">'+pad(no)+'</span>'+
+             '<span class="cap-body">'+inner+'</span></figcaption>';
+    }
+    return '<figcaption><span class="cat-no">'+pad(no)+'</span>'+inner+'</figcaption>';
+  }
+
+  var lead=document.getElementById('lead'), gal=document.getElementById('gallery');
+  if(!works.length){
+    gal.innerHTML='<p class="empty">Works coming soon.</p>';
+  }else{
+    var a0=works[0];
+    lead.innerHTML='<figure class="piece lead">'+frameHTML(a0)+capHTML(a0,1,false)+'</figure>';
+    var html='';
+    for(var i=1;i<works.length;i++){
+      html+='<figure class="piece">'+frameHTML(works[i])+capHTML(works[i],i+1,true)+'</figure>';
+    }
+    gal.innerHTML=html;
+  }
+
+  /* Lightbox */
+  var lb=document.getElementById('lightbox'),
+      lbImg=document.getElementById('lbImg'),
+      lbTitle=document.getElementById('lbTitle'),
+      lbMeta=document.getElementById('lbMeta'),
+      lbClose=document.getElementById('lbClose'),
+      lastFocus=null;
+  function open(frame){
+    var img=frame.querySelector('img'); if(!img) return;
+    lastFocus=frame;
+    lbImg.src=img.currentSrc||img.src; lbImg.alt=img.alt;
+    lbTitle.innerHTML='<em>'+esc(frame.getAttribute('data-title'))+'</em>';
+    lbMeta.textContent=frame.getAttribute('data-meta')||'';
+    lb.hidden=false; requestAnimationFrame(function(){lb.classList.add('open')});
+    lbClose.focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    setTimeout(function(){lb.hidden=true;lbImg.src='';},280);
+    if(lastFocus)lastFocus.focus();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.frame'),function(f){
+    f.addEventListener('click',function(){open(f)});
+  });
+  lbClose.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
+})();
+</script>
+</body>
+</html>
