@@ -29,7 +29,7 @@ window.ARTWORKS = [
   },
 
   {
-    image:  "images/turtle.jpg",
+    image:  "images/turtle.jpg?v=2",
     title:  "Untitled (Sea Turtle)",
     medium: "Colored pencil on paper",
     size:   "",
