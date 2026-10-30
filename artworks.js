@@ -9,19 +9,50 @@
      3. Save / commit.  The new piece shows up first on the site.
 
    - Order top-to-bottom = order shown on the site (newest first is nice).
+   - The first piece in the list is shown large at the top of the page.
    - The catalogue numbers (01, 02, ...) are added automatically.
    - Anything you leave as ""  is simply skipped.
+
+   NOTE: titles below are placeholders ("Untitled ..."), and the mediums are
+   best guesses. Replace them with your real titles, medium, size, and year.
    ========================================================================= */
 
 window.ARTWORKS = [
 
   {
     image:  "images/left-to-the-woods.jpg",
-    title:  "Left to the Woods",          // <-- replace with the real title
-    medium: "Acrylic on canvas",          // <-- oil? acrylic? mixed media?
-    size:   "16 × 20 in",                 // <-- real dimensions
-    year:   "2025",                       // <-- year made
-    alt:    "Painting of an abandoned red sports car settling into dense green undergrowth beneath leaning trees."
+    title:  "Untitled (E-Type in the Woods)",   // <-- your real title
+    medium: "Acrylic on canvas",
+    size:   "",                                 // e.g. "16 × 20 in"
+    year:   "",                                 // e.g. "2025"
+    alt:    "Acrylic painting of an abandoned red E-Type sports car settling into dense green undergrowth beneath leaning trees."
+  },
+
+  {
+    image:  "images/turtle.jpg",
+    title:  "Untitled (Sea Turtle)",
+    medium: "Colored pencil on paper",
+    size:   "",
+    year:   "",
+    alt:    "Colored-pencil drawing of a sea turtle among mangrove roots, with a perched bird and two butterflies, in blues and greens."
+  },
+
+  {
+    image:  "images/star-and-fries.jpg",
+    title:  "Untitled (Fries)",
+    medium: "Colored pencil & mixed media",
+    size:   "",
+    year:   "",
+    alt:    "Drawing of a star-shaped form in a blue bowl ringed by french fries on a black ground."
+  },
+
+  {
+    image:  "images/still-life-graphite.jpg",
+    title:  "Untitled (Still Life)",
+    medium: "Graphite on paper",
+    size:   "",
+    year:   "",
+    alt:    "Graphite still life of a soccer cleat, a water bottle, and headphones resting on draped fabric."
   },
 
   /* ---- Copy this block for each new piece and move it up the list ----
